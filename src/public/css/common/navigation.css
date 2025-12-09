@@ -1,0 +1,102 @@
+/* --- ESTILOS DE ESCRITORIO (PC) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 5%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.nav-logo {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+/* Lista de enlaces en PC */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff9f43; /* Naranja al pasar el mouse */
+}
+
+/* --- BOTÓN HAMBURGUESA (Por defecto OCULTO) --- */
+.hamburger {
+    display: none; /* ¡Importante! En PC no se ve */
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- MODO CELULAR (Responsive) --- */
+@media (max-width: 768px) {
+    
+    /* 1. MOSTRAR la hamburguesa */
+    .hamburger {
+        display: block; 
+    }
+
+    /* 2. ESCONDER el menú original y darle estilo de panel */
+    .nav-links {
+        position: fixed;      /* Se fija a la pantalla */
+        left: -100%;          /* Se esconde a la izquierda */
+        top: 70px;            /* Debajo de la barra blanca */
+        flex-direction: column; /* Lista vertical */
+        background-color: #ffffff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;     /* Animación de entrada */
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        padding: 2rem 0;
+    }
+
+    /* 3. CLASE ACTIVE (Esta la pone el JavaScript al hacer clic) */
+    .nav-links.active {
+        left: 0; /* ¡Aparece el menú! */
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0; /* Espacio entre opciones */
+    }
+
+    /* 4. Animación de la X en la hamburguesa */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}

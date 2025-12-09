@@ -1,13 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-</head>
-<body>
-    <%- include('partials/navigation') %>
-    <h1>Contact Us</h1>
-    <%- include('partials/footer') %>
-</body>
-</html>
+<header class="page-header">
+    <div class="overlay"></div>
+    <div class="container content fade-in">
+        <h1>Estamos aquí para ti</h1>
+        <p>¿Tienes dudas? Escríbenos o visítanos. Nos encantará conocerte.</p>
+    </div>
+</header>
+
+<section class="contact-section">
+    <div class="container contact-wrapper">
+        
+        <div class="contact-info fade-in">
+            <h2>Información de Contacto</h2>
+            <p>Ven a conocer nuestras instalaciones y siente la calidez de nuestro ambiente.</p>
+            
+            <div class="info-item">
+                <div class="icon-box">📍</div>
+                <div>
+                    <h3>Nuestra Ubicación</h3>
+                    <p>Av. Los Girasoles 123, Urb. Primavera</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="icon-box">📞</div>
+                <div>
+                    <h3>Llámanos</h3>
+                    <p>+51 987 654 321</p>
+                    <p>(01) 234-5678</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="icon-box">⏰</div>
+                <div>
+                    <h3>Horario de Atención</h3>
+                    <p>Lunes a Viernes: 7:30 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-icon">F</a> <a href="#" class="social-icon">I</a> <a href="#" class="social-icon">W</a> </div>
+        </div>
+
+        <div class="contact-form-card fade-in">
+            <h2>Envíanos un Mensaje</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre del Apoderado</label>
+                    <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Teléfono / Celular</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Ej: 999 999 999" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje o Consulta</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Quisiera información sobre vacantes para 3 años..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width">Enviar Mensaje</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<section class="map-section fade-in">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.666601267866!2d-77.036525!3d-12.066667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDA0JzAwLjAiUyA3N8KwMDInMTEuNSJX!5e0!3m2!1ses!2spe!4v1620000000000!5m2!1ses!2spe" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+</section>
