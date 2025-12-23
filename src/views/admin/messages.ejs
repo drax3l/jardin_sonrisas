@@ -1,0 +1,64 @@
+<header class="page-header admin-header">
+    <div class="overlay"></div>
+    <div class="container content fade-in">
+        <h1>Bandeja de Entrada</h1>
+        <p>Panel de Administración de Cuna Jardín Sonrisas</p>
+    </div>
+</header>
+
+<section class="container fade-in">
+    
+    <div class="admin-controls">
+        <h2>Mensajes Recibidos</h2>
+        <span class="badge-counter">
+            Total: <%= mensajes.length %>
+        </span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="messages-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Padre/Apoderado</th>
+                    <th>Contacto</th>
+                    <th>Mensaje</th>
+                    <th style="text-align: center;">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% mensajes.forEach((msg) => { %>
+                    <tr>
+                        <td class="text-date">
+                            <%= msg.FechaRecibido %>
+                        </td>
+                        <td class="text-name">
+                            <%= msg.Nombre %>
+                        </td>
+                        <td class="contact-details">
+                            <div class="contact-email">📧 <%= msg.Email %></div>
+                            <div class="contact-phone">📞 <%= msg.Telefono %></div>
+                        </td>
+                        <td class="text-msg">
+                            <%= msg.Mensaje %>
+                        </td>
+                        <td style="text-align: center;">
+                            <span class="status-badge <%= (msg.Estado === 'Pendiente') ? 'pendiente' : 'atendido' %>">
+                                <%= msg.Estado || 'Recibido' %>
+                            </span>
+                        </td>
+                    </tr>
+                <% }) %>
+
+                <% if (mensajes.length === 0) { %>
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: #999;">
+                            <h3>📭</h3>
+                            <p>No hay mensajes nuevos por ahora.</p>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>

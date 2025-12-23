@@ -1,19 +1,45 @@
+// src/routes/main.routes.js (o como se llame tu archivo)
 import { Router } from 'express';
+
+// 1. AGREGAMOS 'viewAdminMessages' A LA LISTA DE IMPORTS
+import { 
+viewHome, 
+    viewAbout, 
+    viewContact, 
+    saveContactMessage, 
+    viewAdminMessages, 
+    viewLoginDocentes,
+    viewLoginEstudiantes,
+    viewError404
+} from '../controllers/mainController.js';
 
 const router = Router();
 
-// Rutas normales
-router.get('/', (req, res) => res.render('index', { title: 'Inicio - Cuna Jardín', style: 'home/index.css', script: 'home/index.js' }));
-router.get('/about', (req, res) => res.render('about', { title: 'Nosotros', style: 'about/about.css', script: 'about/about.js' }));
-router.get('/contact', (req, res) => res.render('contact', { title: 'Contacto', style: 'contact/contact.css', script: 'contact/contact.js' }));
+// --- Rutas Públicas ---
+router.get('/', viewHome);
+router.get('/about', viewAbout);
+router.get('/contact', viewContact);
 
-// RUTA ERROR 404 (Siempre al final)
-router.use((req, res) => {
-    res.status(404).render('404', { 
-        title: 'Página no encontrada',
-        style: '',   // String vacío para que no falle el layout
-        script: ''   // String vacío
-    });
-});
+// 2. Rutas de Login (¡VERIFICA QUE ESTÉN AQUÍ!)
+router.get('/login/docentes', viewLoginDocentes);
+router.get('/login/estudiantes', viewLoginEstudiantes);
+
+// 3. Ruta Admin
+router.get('/admin/mensajes', viewAdminMessages);
+
+// 4. Guardar datos
+router.post('/contact', saveContactMessage);
+
+// --- Rutas Administrativas (NUEVO) ---
+// La ponemos aquí, antes del 404.
+router.get('/admin/mensajes', viewAdminMessages);
+
+// --- Ruta POST (Guardar datos) ---
+router.post('/contact', saveContactMessage);
+
+// --- RUTA ERROR 404 (Siempre debe ser la última línea de rutas) ---
+router.use(viewError404);
+
+console.log('Rutas cargadas correctamente');
 
 export default router;

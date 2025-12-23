@@ -1,0 +1,98 @@
+/* src/public/css/admin/messages.css */
+
+/* Cabecera del Panel */
+.admin-header {
+    height: 40vh;
+    min-height: 200px;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/banner-contact.jpg'); /* O la imagen que prefieras */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Contenedor de estadísticas y título */
+.admin-controls {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 40px 0 20px 0;
+}
+
+.badge-counter {
+    background: var(--primary); 
+    color: white; 
+    padding: 8px 18px; 
+    border-radius: 50px; 
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* La Tabla Bonita */
+.table-responsive {
+    overflow-x: auto; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    border-radius: 12px;
+    background: white;
+}
+
+.messages-table {
+    width: 100%; 
+    border-collapse: collapse; 
+    min-width: 800px; 
+}
+
+.messages-table thead {
+    background: var(--primary); 
+    color: white;
+}
+
+.messages-table th, 
+.messages-table td {
+    padding: 18px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.messages-table tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s ease;
+}
+
+.messages-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Estilos de texto específicos */
+.text-date { color: #888; font-size: 0.9em; }
+.text-name { font-weight: bold; color: #333; font-size: 1.05em; }
+.text-msg { color: #555; line-height: 1.5; }
+
+.contact-details div { margin-bottom: 3px; }
+.contact-email { font-size: 0.9em; color: #555; }
+.contact-phone { font-size: 0.9em; color: var(--secondary); font-weight: 600; }
+
+/* Badges de Estado (La lógica visual) */
+.status-badge {
+    padding: 6px 12px; 
+    border-radius: 20px; 
+    font-size: 0.85em; 
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Estado: Pendiente (Amarillo) */
+.status-badge.pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Estado: Atendido/Recibido (Verde) */
+.status-badge.atendido {
+    background-color: #d4edda;
+    color: #155724;
+}

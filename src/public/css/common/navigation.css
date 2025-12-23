@@ -1,11 +1,16 @@
-/* --- ESTILOS DE ESCRITORIO (PC) --- */
+/* src/public/css/common/navigation.css */
+
+/* =========================================
+   1. ESTILOS PRINCIPALES (Escritorio)
+   ========================================= */
+
 .main-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 5%;
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background-color: var(--white); /* Usa tu variable */
+    box-shadow: var(--shadow);      /* Usa tu sombra global */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -18,31 +23,87 @@
     display: block;
 }
 
-/* Lista de enlaces en PC */
+/* Lista de enlaces */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem; 
     align-items: center;
     margin: 0;
     padding: 0;
 }
 
+/* Enlaces normales (Inicio, Nosotros, Contacto) */
 .nav-links a {
     text-decoration: none;
-    color: #555;
+    color: var(--text-light); /* Usa tu gris suave */
     font-weight: 600;
     font-size: 1rem;
     transition: color 0.3s;
 }
 
-.nav-links a:hover {
-    color: #ff9f43; /* Naranja al pasar el mouse */
+/* Hover para enlaces de texto */
+.nav-links a:not(.nav-btn):hover {
+    color: var(--primary); /* Tu Naranja Tigre */
 }
 
-/* --- BOTÓN HAMBURGUESA (Por defecto OCULTO) --- */
+/* =========================================
+   2. BOTONES DE LOGIN (Docentes y Alumnos)
+   ========================================= */
+
+/* Separador Vertical (|) */
+.separator {
+    color: #ccc;
+    margin: 0 5px;
+    font-weight: 300;
+}
+
+/* Estilo Base para AMBOS botones */
+.nav-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700 !important;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2; /* Asegura buen centrado vertical */
+}
+
+/* --- BOTÓN DOCENTES (Azul Institucional) --- */
+/* Definimos un azul local porque no está en main.css */
+.btn-docente {
+    background-color: transparent;
+    color: #3f51b5; /* Azul serio */
+    border-color: #3f51b5;
+}
+
+.btn-docente:hover {
+    background-color: #3f51b5;
+    color: var(--white) !important;
+}
+
+/* --- BOTÓN ESTUDIANTES (Tu Naranja de Marca) --- */
+.btn-estudiante {
+    background-color: var(--primary); /* Tu Naranja #ff9f43 */
+    color: var(--white) !important;
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(255, 159, 67, 0.3); /* Sombra naranja suave */
+}
+
+.btn-estudiante:hover {
+    background-color: var(--primary-hover); /* Tu Naranja oscuro */
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 159, 67, 0.4);
+}
+
+/* =========================================
+   3. BOTÓN HAMBURGUESA (Móvil)
+   ========================================= */
 .hamburger {
-    display: none; /* ¡Importante! En PC no se ve */
+    display: none;
     cursor: pointer;
     background: none;
     border: none;
@@ -53,50 +114,58 @@
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: #333;
+    background-color: var(--text-dark); /* Tu gris oscuro */
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
 
-/* --- MODO CELULAR (Responsive) --- */
+/* =========================================
+   4. MODO CELULAR (Responsive)
+   ========================================= */
 @media (max-width: 768px) {
     
-    /* 1. MOSTRAR la hamburguesa */
-    .hamburger {
-        display: block; 
-    }
+    .hamburger { display: block; }
 
-    /* 2. ESCONDER el menú original y darle estilo de panel */
+    /* Panel desplegable */
     .nav-links {
-        position: fixed;      /* Se fija a la pantalla */
-        left: -100%;          /* Se esconde a la izquierda */
-        top: 70px;            /* Debajo de la barra blanca */
-        flex-direction: column; /* Lista vertical */
-        background-color: #ffffff;
+        position: fixed;
+        left: -100%;
+        top: 70px; /* Altura aproximada del nav */
+        flex-direction: column;
+        background-color: var(--white);
         width: 100%;
+        height: calc(100vh - 70px);
         text-align: center;
-        transition: 0.3s;     /* Animación de entrada */
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        padding: 2rem 0;
+        transition: 0.3s ease-in-out;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        padding-top: 2rem;
+        overflow-y: auto;
     }
 
-    /* 3. CLASE ACTIVE (Esta la pone el JavaScript al hacer clic) */
-    .nav-links.active {
-        left: 0; /* ¡Aparece el menú! */
-    }
+    .nav-links.active { left: 0; }
 
     .nav-links li {
-        margin: 1.5rem 0; /* Espacio entre opciones */
+        margin: 1.5rem 0;
+        width: 100%;
     }
 
-    /* 4. Animación de la X en la hamburguesa */
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
+    /* --- AJUSTES BOTONES EN MÓVIL --- */
+    .separator { display: none !important; }
+
+    .nav-btn {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        padding: 14px 0; /* Más fácil de tocar */
+        font-size: 1.1rem;
     }
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+    
+    .btn-estudiante {
+        margin-top: 20px;
     }
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+
+    /* Animación X */
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }

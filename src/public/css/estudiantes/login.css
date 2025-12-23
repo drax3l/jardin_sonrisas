@@ -1,0 +1,164 @@
+/* =========================================
+   ESTILOS LOGIN ESTUDIANTES (Aula Virtual)
+   Archivo: src/public/css/estudiantes/login.css
+   ========================================= */
+
+/* Variables locales para facilitar cambios de color */
+:root {
+    --student-primary: #ff9800;   /* Naranja Principal */
+    --student-dark: #f57c00;      /* Naranja Oscuro (Hover) */
+    --student-light: #ffe0b2;     /* Fondo suave */
+    --text-color: #444;
+    --white: #ffffff;
+}
+
+/* 1. CONTENEDOR PRINCIPAL (Fondo de pantalla) */
+.login-wrapper {
+    min-height: 85vh; /* Ocupa casi toda la altura visible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Un degradado suave naranja/crema para que se vea moderno */
+    background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%);
+    padding: 20px;
+}
+
+/* 2. TARJETA DE LOGIN (La caja blanca) */
+.login-container {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 400px; /* No muy ancha para que se vea elegante */
+    padding: 2.5rem;
+    border-radius: 15px; /* Bordes redondeados amigables */
+    
+    /* Sombra suave para efecto 3D */
+    box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
+    
+    /* Borde superior decorativo */
+    border-top: 6px solid var(--student-primary);
+    
+    /* Animación de entrada */
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 3. ENCABEZADO (Título e Icono) */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h1 {
+    color: var(--student-dark);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-header p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* 4. FORMULARIO */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Espacio entre inputs */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Estilo de los Inputs */
+.form-group input {
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+/* Efecto al hacer clic en el input */
+.form-group input:focus {
+    outline: none;
+    border-color: var(--student-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.1); /* Resplandor naranja suave */
+}
+
+/* 5. BOTÓN DE INGRESAR */
+.btn-student {
+    background-color: var(--student-primary);
+    color: white;
+    font-weight: bold;
+    padding: 14px;
+    border: none;
+    border-radius: 50px; /* Botón píldora */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(255, 152, 0, 0.2);
+}
+
+.btn-student:hover {
+    background-color: var(--student-dark);
+    transform: translateY(-2px); /* Se eleva un poco */
+    box-shadow: 0 6px 12px rgba(255, 152, 0, 0.3);
+}
+
+/* 6. ENLACES EXTRA (Olvidé contraseña) */
+.help-links {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.help-links a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.help-links a:hover {
+    color: var(--student-primary);
+    text-decoration: underline;
+}
+
+/* 7. ANIMACIÓN (Efecto de aparición) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 8. RESPONSIVE (Celular) */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+        box-shadow: none; /* Quitamos sombra en móviles simples */
+        border: 1px solid #eee;
+    }
+    
+    .login-wrapper {
+        background: white; /* Fondo blanco en celular para limpieza */
+        align-items: flex-start; /* Subir el form un poco */
+        padding-top: 40px;
+    }
+}
