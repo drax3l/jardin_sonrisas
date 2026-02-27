@@ -1,0 +1,47 @@
+<div class="welcome-text">
+    <h2>¡Hola, <span><%= user ? user.nombre : 'Estudiante' %></span>! 👋</h2>
+    <p>Aquí tienes el resumen de tu avance.</p>
+</div>
+
+<section class="stats-grid">
+    <div class="card stat-card">
+        <div class="icon-box blue"><i class="fa-solid fa-book"></i></div>
+        <div>
+            <h3>4</h3> <p>Cursos Activos</p>
+        </div>
+    </div>
+    <div class="card stat-card">
+        <div class="icon-box green"><i class="fa-solid fa-check-circle"></i></div>
+        <div>
+            <h3>Asistió</h3>
+            <p>Estado de hoy</p>
+        </div>
+    </div>
+    <div class="card stat-card">
+        <div class="icon-box orange"><i class="fa-solid fa-star"></i></div>
+        <div>
+            <h3>Bueno</h3>
+            <p>Comportamiento</p>
+        </div>
+    </div>
+</section>
+
+<section class="recent-courses">
+    <h3><i class="fa-solid fa-bell"></i> Avisos Recientes</h3>
+    
+    <div class="card course-list">
+        <div class="course-item">
+            <div class="course-info">
+                <h4>Reunión de Padres</h4>
+                <span class="badge warning">Viernes 5PM</span>
+            </div>
+        </div>
+
+        <div class="course-item">
+            <div class="course-info">
+                <h4>Materiales de Arte</h4>
+                <span class="badge success">Para mañana</span>
+            </div>
+        </div>
+    </div>
+</section>

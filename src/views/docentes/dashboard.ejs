@@ -1,0 +1,52 @@
+<div class="welcome-text">
+    <h2>Bienvenido, <span><%= user.nombre %></span> 👨‍🏫</h2>
+    <p>Panel de Gestión Académica - Especialidad: <strong><%= user.especialidad %></strong></p>
+</div>
+
+<section class="stats-grid">
+    <div class="card stat-card">
+        <div class="icon-box purple"><i class="fa-solid fa-users"></i></div>
+        <div>
+            <h3>25</h3>
+            <p>Total Alumnos</p>
+        </div>
+    </div>
+    
+    <div class="card stat-card">
+        <div class="icon-box blue"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+            <h3>3</h3>
+            <p>Clases Hoy</p>
+        </div>
+    </div>
+    
+    <div class="card stat-card">
+        <div class="icon-box orange"><i class="fa-solid fa-file-pen"></i></div>
+        <div>
+            <h3>8</h3>
+            <p>Tareas por Revisar</p>
+        </div>
+    </div>
+</section>
+
+<section class="recent-courses">
+    <h3><i class="fa-solid fa-clock"></i> Clases del Día</h3>
+    
+    <div class="card course-list">
+        <div class="course-item">
+            <div class="course-info">
+                <h4>Matemáticas - 4 Años "A"</h4>
+                <span class="badge warning">09:00 AM - 10:30 AM</span>
+            </div>
+            <button class="btn-action">Iniciar</button>
+        </div>
+
+        <div class="course-item">
+            <div class="course-info">
+                <h4>Matemáticas - 5 Años "B"</h4>
+                <span class="badge success">Finalizada</span>
+            </div>
+            <button class="btn-action">Ver Asistencia</button>
+        </div>
+    </div>
+</section>

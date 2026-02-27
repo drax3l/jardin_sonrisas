@@ -1,55 +1,37 @@
-// src/public/js/estudiantes/login.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login-form');
     
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            // ⚠️ IMPORTANTE: NO usamos e.preventDefault();
+            // Dejamos que el formulario viaje naturalmente al servidor (/access)
 
-            // 1. Capturar datos
-            const inputs = loginForm.querySelectorAll('input');
-            const codigo = inputs[0].value;
-            const password = inputs[1].value;
             const btnSubmit = loginForm.querySelector('button');
-
-            // 2. Validación
-            if (!codigo || !password) {
-                mostrarAlerta('¡Ups!', 'Falta tu código o contraseña.', 'warning');
-                return;
-            }
-
-            // 3. Efecto de carga
-            const textoOriginal = btnSubmit.innerText;
-            btnSubmit.innerText = '🎒 Abriendo mochila...';
-            btnSubmit.disabled = true;
-
-            // 4. Simulación de servidor
-            setTimeout(() => {
-                btnSubmit.innerText = textoOriginal;
-                btnSubmit.disabled = false;
-
-                mostrarAlerta(
-                    '¡Hola Estudiante!', 
-                    'Estamos preparando tus notas y cursos. Código recibido: ' + codigo, 
-                    'success'
-                );
+            
+            // Solo agregamos un efecto visual de carga para que se vea bonito
+            if (btnSubmit) {
+                // Guardamos el ancho original para que el botón no se achique
+                const originalWidth = btnSubmit.offsetWidth;
+                btnSubmit.style.width = `${originalWidth}px`;
                 
-                // Si fuera real, aquí haríamos: window.location.href = '/estudiantes/dashboard';
-            }, 1500);
+                // Cambiamos el texto y mostramos un spinner simple
+                btnSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Entrando...';
+                btnSubmit.style.opacity = '0.8';
+                btnSubmit.style.cursor = 'wait';
+                
+                // Nota: No deshabilitamos el botón (disabled) inmediatamente 
+                // para asegurar que el formulario se envíe correctamente.
+            }
         });
+    }
+
+    // Opcional: Si hay una alerta de error en el HTML (backend), la hacemos desaparecer suavemente
+    const serverAlert = document.querySelector('.alert-error');
+    if (serverAlert) {
+        setTimeout(() => {
+            serverAlert.style.transition = "opacity 0.5s ease";
+            serverAlert.style.opacity = "0";
+            setTimeout(() => serverAlert.remove(), 500);
+        }, 4000); // Desaparece a los 4 segundos
     }
 });
-
-function mostrarAlerta(titulo, mensaje, icono) {
-    if (typeof Swal !== 'undefined') {
-        Swal.fire({
-            title: titulo,
-            text: mensaje,
-            icon: icono,
-            confirmButtonColor: '#ff9800' // Naranja Estudiante
-        });
-    } else {
-        alert(`${titulo}\n\n${mensaje}`);
-    }
-}

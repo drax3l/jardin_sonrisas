@@ -1,0 +1,42 @@
+<div class="sidebar teacher-theme">
+    <div class="sidebar-header">
+        <i class="fa-solid fa-chalkboard-user fa-2x"></i>
+        <h3>Intranet Docente</h3>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li>
+            <a href="/docentes/dashboard" class="<%= isActive(pagina, 'dashboard') %>">
+                <i class="fa-solid fa-house"></i>
+                <span>Panel General</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="/docentes/alumnos" class="<%= isActive(pagina, 'alumnos') %>">
+                <i class="fa-solid fa-people-group"></i>
+                <span>Mis Alumnos</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="<%= isActive(pagina, 'calificaciones') %>">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>Calificaciones</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="<%= isActive(pagina, 'asistencia') %>">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Asistencia</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="/logout" class="btn-logout">
+            <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+        </a>
+    </div>
+</div>

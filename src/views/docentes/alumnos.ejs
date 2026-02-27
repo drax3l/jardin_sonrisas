@@ -1,0 +1,63 @@
+<div class="welcome-text">
+    <h2>Mis Alumnos 🎒</h2>
+    <p>Listado general de estudiantes matriculados.</p>
+</div>
+
+<div class="card" style="margin-top: 20px; overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+        <thead>
+            <tr style="background-color: #f8f9fa; text-align: left; border-bottom: 2px solid #e9ecef;">
+                <th style="padding: 15px; color: #4a148c;">Estudiante</th>
+                <th style="padding: 15px; color: #4a148c;">Edad</th>
+                <th style="padding: 15px; color: #4a148c;">Apoderado</th>
+                <th style="padding: 15px; color: #4a148c;">Teléfono</th>
+                <th style="padding: 15px; color: #4a148c; text-align: center;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (alumnos.length > 0) { %>
+                <% alumnos.forEach((alumno) => { %>
+                    <tr style="border-bottom: 1px solid #f1f1f1;">
+                        <td style="padding: 15px; display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 40px; height: 40px; background: #e1bee7; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #4a148c; font-weight: bold;">
+                                <%= alumno.Nombres.charAt(0) %><%= alumno.Apellidos.charAt(0) %>
+                            </div>
+                            <div>
+                                <strong style="display: block; color: #333;"><%= alumno.Nombres %> <%= alumno.Apellidos %></strong>
+                                <span style="font-size: 12px; color: #888;">DNI: <%= alumno.DNI_Menor %></span>
+                            </div>
+                        </td>
+
+                        <td style="padding: 15px; color: #555;">
+                            <%= alumno.Edad %> años
+                        </td>
+
+                        <td style="padding: 15px; color: #555;">
+                            <i class="fa-solid fa-user-group" style="color: #9c27b0; margin-right: 5px;"></i>
+                            <%= alumno.NombreApoderado %>
+                        </td>
+
+                        <td style="padding: 15px;">
+                            <a href="https://wa.me/51<%= alumno.Telefono %>" target="_blank" style="text-decoration: none; color: #2ecc71; font-weight: bold; background: #e8f5e9; padding: 5px 10px; border-radius: 15px; font-size: 13px;">
+                                <i class="fa-brands fa-whatsapp"></i> <%= alumno.Telefono %>
+                            </a>
+                        </td>
+
+                        <td style="padding: 15px; text-align: center;">
+                            <button style="background: none; border: 1px solid #ddd; padding: 6px 10px; border-radius: 6px; cursor: pointer; color: #555;" title="Ver Ficha">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="5" style="padding: 30px; text-align: center; color: #999;">
+                        <i class="fa-solid fa-folder-open" style="font-size: 30px; margin-bottom: 10px;"></i>
+                        <p>No hay alumnos registrados aún.</p>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>

@@ -1,60 +1,35 @@
-// src/public/js/docentes/login.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login-form');
     
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Evita que la página se recargue
-
-            // 1. Capturar datos
-            const inputs = loginForm.querySelectorAll('input');
-            const usuario = inputs[0].value;
-            const password = inputs[1].value;
+            // ⚠️ IMPORTANTE: BORRAMOS e.preventDefault()
+            // Dejamos que el formulario viaje al servidor para que SQL valide la clave
+            
             const btnSubmit = loginForm.querySelector('button');
 
-            // 2. Validación simple
-            if (!usuario || !password) {
-                mostrarAlerta('Error', 'Por favor ingrese sus credenciales.', 'error');
-                return;
-            }
+            if (btnSubmit) {
+                // 1. Guardamos el ancho para que no "baile"
+                const originalWidth = btnSubmit.offsetWidth;
+                btnSubmit.style.width = `${originalWidth}px`;
 
-            // 3. Simular proceso de carga (Feedback visual)
-            const textoOriginal = btnSubmit.innerText;
-            btnSubmit.innerText = 'Verificando...';
-            btnSubmit.disabled = true;
-            btnSubmit.style.opacity = '0.7';
-
-            // 4. Simulación de petición al servidor (2 segundos)
-            setTimeout(() => {
-                // Restaurar botón
-                btnSubmit.innerText = textoOriginal;
-                btnSubmit.disabled = false;
-                btnSubmit.style.opacity = '1';
-
-                // AQUÍ IRÍA LA LÓGICA REAL DE LOGIN (fetch)
-                // Por ahora, mostramos que es una demo
-                mostrarAlerta(
-                    '¡Bienvenido, Colega!', 
-                    'El sistema de gestión docente estará listo pronto. Usuario: ' + usuario, 
-                    'info'
-                );
+                // 2. Efecto visual de carga
+                btnSubmit.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Verificando...';
+                btnSubmit.style.opacity = '0.8';
+                btnSubmit.style.cursor = 'wait';
                 
-            }, 1500);
+                // Nota: No deshabilites el botón (disabled) inmediatamente o el formulario podría no enviarse en algunos navegadores.
+            }
         });
+    }
+
+    // EXTRA: Si el servidor devuelve un error (rojo), hacemos que desaparezca solito
+    const serverAlert = document.querySelector('div[style*="background-color: #f3e5f5"]'); // Busca la alerta morada
+    if (serverAlert) {
+        setTimeout(() => {
+            serverAlert.style.transition = "opacity 0.5s ease";
+            serverAlert.style.opacity = "0";
+            setTimeout(() => serverAlert.remove(), 500);
+        }, 4000);
     }
 });
-
-// Función auxiliar para usar SweetAlert2 si existe, o alert normal
-function mostrarAlerta(titulo, mensaje, icono) {
-    if (typeof Swal !== 'undefined') {
-        Swal.fire({
-            title: titulo,
-            text: mensaje,
-            icon: icono,
-            confirmButtonColor: '#3f51b5' // Azul Docente
-        });
-    } else {
-        alert(`${titulo}: ${mensaje}`);
-    }
-}

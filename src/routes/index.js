@@ -1,45 +1,67 @@
-// src/routes/main.routes.js (o como se llame tu archivo)
 import { Router } from 'express';
 
-// 1. AGREGAMOS 'viewAdminMessages' A LA LISTA DE IMPORTS
+// 1. IMPORTAMOS LAS FUNCIONES DEL CONTROLADOR
 import { 
-viewHome, 
+    viewHome, 
     viewAbout, 
     viewContact, 
     saveContactMessage, 
     viewAdminMessages, 
     viewLoginDocentes,
     viewLoginEstudiantes,
+    access,
+    viewDocenteAlumnos, 
+    viewDocenteDashboard,
+    viewEstudianteDashboard,
+    logout,
     viewError404
 } from '../controllers/mainController.js';
 
 const router = Router();
 
-// --- Rutas Públicas ---
+// ===================================================
+// RUTAS GET (Ver páginas)
+// ===================================================
+
+// --- Públicas ---
 router.get('/', viewHome);
 router.get('/about', viewAbout);
 router.get('/contact', viewContact);
 
-// 2. Rutas de Login (¡VERIFICA QUE ESTÉN AQUÍ!)
+// --- Login (Pantallas) ---
 router.get('/login/docentes', viewLoginDocentes);
 router.get('/login/estudiantes', viewLoginEstudiantes);
 
-// 3. Ruta Admin
+// --- Dashboards (Paneles Privados) ---
+router.get('/docentes/dashboard', viewDocenteDashboard);
+router.get('/estudiantes/dashboard', viewEstudianteDashboard);
+
+// --- Módulos Docente ---
+router.get('/docentes/alumnos', viewDocenteAlumnos); 
+
+// --- Administrativas ---
 router.get('/admin/mensajes', viewAdminMessages);
 
-// 4. Guardar datos
+// --- Logout ---
+router.get('/logout', logout);
+
+
+// ===================================================
+// RUTAS POST (Enviar datos / Procesar formularios)
+// ===================================================
+
+// Procesar formulario de contacto
 router.post('/contact', saveContactMessage);
 
-// --- Rutas Administrativas (NUEVO) ---
-// La ponemos aquí, antes del 404.
-router.get('/admin/mensajes', viewAdminMessages);
+// Procesar LOGIN (¡ESTO FALTABA!) 🚨
+router.post('/access', access); 
 
-// --- Ruta POST (Guardar datos) ---
-router.post('/contact', saveContactMessage);
 
-// --- RUTA ERROR 404 (Siempre debe ser la última línea de rutas) ---
+// ===================================================
+// ERROR 404 (Siempre al final)
+// ===================================================
 router.use(viewError404);
 
-console.log('Rutas cargadas correctamente');
+console.log('✅ Rutas cargadas correctamente');
 
 export default router;

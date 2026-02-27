@@ -1,0 +1,120 @@
+/* =========================================
+   ESTILOS DOCENTE (src/public/css/docentes/dashboard.css)
+   ========================================= */
+
+:root {
+    --primary-color: #4a148c;   /* Morado Oscuro */
+    --accent-color: #9c27b0;    /* Morado claro */
+    --bg-color: #f3f4f6;
+    --white: #ffffff;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --sidebar-width: 260px;     /* Ancho fijo del menú */
+}
+
+/* Reset básico */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-dark); }
+
+/* 1. LAYOUT PRINCIPAL */
+.dashboard-container { 
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/* 2. SIDEBAR (LA BARRA LATERAL) */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed; /* Se queda quieta al bajar */
+    left: 0; 
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: var(--white);
+    
+    /* TEMA MORADO */
+    background-color: var(--primary-color); 
+}
+
+/* Título e Icono del Sidebar */
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-header h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* 3. MENÚ DE NAVEGACIÓN */
+.sidebar-menu {
+    list-style: none; /* Quita los puntos feos • */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Los Enlaces (Botones) */
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: rgba(255,255,255,0.8); /* Blanco transparente */
+    text-decoration: none; /* Quita el subrayado azul */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.sidebar-menu a i {
+    width: 30px; /* Espacio para el icono */
+    text-align: center;
+}
+
+/* Efecto Hover y Activo (Cuando estás en la página) */
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: rgba(255,255,255,0.2); /* Fondo blanco suave */
+    color: var(--white);
+    font-weight: bold;
+    transform: translateX(5px); /* Pequeño movimiento a la derecha */
+    border-left: 4px solid var(--accent-color); /* Borde morado claro */
+}
+
+/* Footer del Sidebar (Cerrar Sesión) */
+.sidebar-footer {
+    margin-top: auto; /* Empuja esto al final abajo */
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-logout {
+    color: #fca5a5 !important; /* Rojo suave */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+.btn-logout:hover {
+    color: #fff !important;
+}
+
+/* 4. CONTENIDO PRINCIPAL (A la derecha del sidebar) */
+.main-content {
+    margin-left: var(--sidebar-width); /* Deja espacio para el sidebar */
+    width: calc(100% - var(--sidebar-width));
+    padding: 40px;
+}
+
+/* Estilos de la Tabla (Para Mis Alumnos) */
+.welcome-text { margin-bottom: 20px; }
+.welcome-text h2 { color: var(--primary-color); }

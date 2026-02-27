@@ -1,0 +1,35 @@
+<div class="sidebar student-theme">
+    <div class="sidebar-header">
+        <i class="fa-solid fa-shapes fa-2x"></i>
+        <h3>Aula Virtual</h3>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li>
+            <a href="/estudiantes/dashboard" class="<%= isActive(pagina, 'dashboard') %>">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Mi Aula</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="<%= isActive(pagina, 'tareas') %>">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Mis Tareas</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="<%= isActive(pagina, 'notas') %>">
+                <i class="fa-solid fa-star"></i>
+                <span>Mis Estrellitas</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="/logout" class="btn-logout">
+            <i class="fa-solid fa-right-from-bracket"></i> Salir del Aula
+        </a>
+    </div>
+</div>
